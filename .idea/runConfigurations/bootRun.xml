@@ -1,6 +1,15 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="bootRun" type="GradleRunConfiguration" factoryName="Gradle">
     <ExternalSystemSettings>
+      <option name="env">
+        <map>
+          <entry key="dbName" value="GlassDome" />
+          <entry key="hostname" value="holynamesacademy.database.windows.net" />
+          <entry key="password" value="HolyNames123" />
+          <entry key="url" value="jdb:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;&quot; + &quot;hostNameInCertificate=*.databse.windows.net;loginTimeout=30;" />
+          <entry key="user" value="hna-admin" />
+        </map>
+      </option>
       <option name="executionName" />
       <option name="externalProjectPath" value="$PROJECT_DIR$" />
       <option name="externalSystemIdString" value="GRADLE" />
