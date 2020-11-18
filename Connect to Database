@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 @Controller
 
+
 public void CallDatabase()
         {
             String hostname = "holynamesacademy.database.windows.net";

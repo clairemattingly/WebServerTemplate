@@ -1,0 +1,47 @@
+import java.sql.*;
+class InsertData
+{
+    public static void main (String [] args)
+    {
+        try{
+            String hostname = "holynamesacademy.database.windows.net";
+            String dbName = "GlassDome";
+            String user = "hna-admin";
+            String password = "HolyNames123";
+            String url = String.format("jdb:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;" + "hostNameInCertificate=*.databse.windows.net;loginTimeout=30;", hostname, dbName, user, password);
+            Connection connection = null;
+
+            Connection conn = DriverManager.getConnection(url);
+            String query = "SELECT * FROM Student";
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next())
+            {
+                String name = rs.getString("Name");
+                newStudent.setName(name);
+                int classYear = rs.getInt("ClassYear");
+                newStudent.setClassYear(classYear);
+                String recommendation = rs.getString("Recommendation");
+                newStudent.setRecommendation(recommendation);
+                String why = rs.getString("Why");
+                newStudent.setWhy(why);
+
+                Student.add(newStudent);
+
+                System.out.format("%s, %s, %s\n", newStudent.getName(), newStudent.getClassYear(), newStudent.getRecommendation(), newStudent.getWhy());
+            }
+            st.close();
+
+        }
+        catch (Exception e)
+        {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+        return Players;
+    }
+}
+//https://www.tutorialspoint.com/how-to-insert-data-into-a-mysql-database-with-java
+//https://community.oracle.com/tech/developers/discussion/1336932/how-to-hard-code-values-with-sql-in-java
+//https://alvinalexander.com/java/edu/pj/jdbc/jdbc0002/
