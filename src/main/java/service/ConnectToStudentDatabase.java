@@ -1,3 +1,5 @@
+package service;
+
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -5,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-public class ConnectToDatabase {
+public class ConnectToStudentDatabase {
     public static void main(String [] args) {
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
@@ -42,3 +44,4 @@ public class ConnectToDatabase {
         }
     }
 }
+
