@@ -71,7 +71,11 @@ public class ConnectToTeacherDatabase {
                         teacherInfo.add(resultSet.getString(3));
                         teacherInfo.add(resultSet.getString(4));
                         teacherInfo.add(resultSet.getString(5));
-                        //System.out.println(teacherInfo);
+                        System.out.println(teacherInfo.add(resultSet.getString(1)));
+                        System.out.println(teacherInfo.add(resultSet.getString(2)));
+                        System.out.println(teacherInfo.add(resultSet.getString(3)));
+                        System.out.println("Background: " + teacherInfo.add(resultSet.getString(4)));
+                        System.out.println("Contact: " + teacherInfo.add(resultSet.getString(5)));
                         break;
                     }
                 }
