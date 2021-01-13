@@ -13,7 +13,7 @@ public class UserInput {
     private static final String password = "HolyNames123";
     private static final String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;" + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostname, dbName, user, password);
 
-    public static void main(String[] args) throws Exception, SQLException
+    public static void User() throws Exception, SQLException
     {
         try
         {
