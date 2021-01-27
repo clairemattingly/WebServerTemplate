@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 
 public class ConnectToStudentDatabase {
-    public static void main(String [] args) {
+    public static void DatabaseConnection() {
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
