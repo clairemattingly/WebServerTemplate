@@ -36,7 +36,7 @@ public class ConnectToStudentDatabase {
                     if(resultSet.getString(1).equals(teacherName))
                     {
                         System.out.println(resultSet.getString(1) + " " + resultSet.getInt(2) + " " + resultSet.getString(3) + " " + resultSet.getString(4) + " " + resultSet.getString(5));
-                        if(resultSet.getString(3)=="Yes")
+                        if(resultSet.getString(4)=="Yes")
                         {
                             percentage++;
                         }
