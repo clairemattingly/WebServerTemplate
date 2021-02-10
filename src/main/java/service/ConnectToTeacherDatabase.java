@@ -92,5 +92,47 @@ public class ConnectToTeacherDatabase {
         }
         return teacherInfo;
     }
+
+    public static ArrayList getDepartmentNames(String department) {
+        String hostname = "holynamesacademy.database.windows.net";
+        String dbName = "GlassDome";
+        String user = "hna-admin";
+        String password = "HolyNames123";
+        String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;" + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostname, dbName, user, password);
+        Connection connection;
+        ArrayList<String> teacherNames = new ArrayList <String>();
+
+        try {
+            connection = DriverManager.getConnection(url);
+            String schema = connection.getSchema();
+            System.out.println("Successful connection - Schema: " + schema);
+
+            System.out.println("Query data example:");
+            System.out.println("==============================");
+
+            String selectSql = " SELECT * from Teacher; ";
+
+
+            try (Statement statement = connection.createStatement();
+                 ResultSet resultSet = statement.executeQuery(selectSql)) {
+
+                while (resultSet.next()) {
+                    if (resultSet.getString(3).equals(department))
+                    {
+                        teacherNames.add(resultSet.getString(1));
+                    }
+                }
+                connection.close();
+
+            }
+            catch (SQLException e)//handle any errors
+            {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return teacherNames;
+    }
 }
 
