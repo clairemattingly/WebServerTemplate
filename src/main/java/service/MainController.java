@@ -15,12 +15,20 @@ public class MainController {
 	    return "Home";
 	}
 
-	@GetMapping("/Departments")
-	public String departments()
-	{
+	@GetMapping("/Department")
+    public String department(@RequestParam(name = "department", required = true) String department, Model model)
 
-	    return "Departments";
-	}
+    {
+        model.addAttribute("department", department); // make the variable subject available in your html
+        // this is where you call methods you've written to get information from your database, then store it a variable
+        // and call model.addAttribute with that variable so you can use it in your html
+        return "department";
+
+        //model.addAttribute("teachers", teacherNames); // make the variable subject available in your html
+        // this is where you call methods you've written to get information from your database, then store it a variable
+        // and call model.addAttribute with that variable so you can use it in your html
+    }
+
 
 
 }
