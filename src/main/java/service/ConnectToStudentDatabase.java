@@ -8,13 +8,15 @@ import java.sql.SQLException;
 
 
 public class ConnectToStudentDatabase {
-    public static void main(String [] args) {
+    public static double DatabaseConnection() {
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
         String password = "HolyNames123";
         String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;" + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostname, dbName, user, password);
         Connection connection;
+        double percentage = 0;
+        int num = 0;
 
         try {
             connection = DriverManager.getConnection(url);
@@ -29,9 +31,16 @@ public class ConnectToStudentDatabase {
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(selectSql)) {
 
+
                 while (resultSet.next()) {
                     System.out.println(resultSet.getString(1) + " " + resultSet.getInt(2) + " " + resultSet.getString(3) + " " + resultSet.getString(4));
+                    if(resultSet.getString(3)=="Yes")
+                    {
+                        percentage++;
+                    }
+                    num++;
                 }
+                percentage/=num;
 
                 connection.close();
 
@@ -42,6 +51,7 @@ public class ConnectToStudentDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return percentage;
     }
 }
 
