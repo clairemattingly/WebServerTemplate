@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>English Department</title>
+    <title th:text="${department} Department" />
 </head>
 
-<title>Glass Dome</title>
+<title> Glass Dome </title>
 <style>
         body {
             color:black;
@@ -63,68 +63,70 @@
     img{
         border-radius: 50%;
         width: 250px;
-        height: 180 px;
+        height: 200 px;
     }
 
   }
 
 </style>
 <body>
-<h1>English Department</h1>
+<h1 th:text="${department} Department"/>
+
+https://www.baeldung.com/thymeleaf-arrays
 
  <div class="flex-container">
     <div>Kim Dawson
         <br>
          <a href="/Teachers" >
-            <img border="2" alt="Dawson" src="../static/KDAWSON.jpg" width="50" height="200">
+            <img border="2" alt="Dawson" src= "../static/Projects Pics/KimDawson.jpg" width="50" height="200">
         </a>
     </div>
-    <div> Draggoo
+    <div> Kim Draggoo
         <br>
         <a href="/Teachers" >
-            <img border="2" alt="Draggoo" src="../static/KDAWSON.jpg" width="50" height="200">
+            <img border="2" alt="Draggoo" src="../static/Projects Pics/KimberlyDraggoo.jpg" width="50" height="200">
         </a>
     </div>
-    <div> Gala
+    <div> Anne Gala
         <br>
         <a href="/Teachers" >
-            <img border="2" alt="Gala" src="../static/KDAWSON.jpg" width="50" height="200">
+            <img border="2" alt="Gala" src="../static/Projects Pics/AnneGala.jpg" width="50" height="200">
         </a>
     </div>
-    <div>Karp
+    <div> David Karp
         <br>
         <a href="/Teachers" >
-            <img border="2" alt="Karp" src="../static/KDAWSON.jpg" width="50" height="200">
+            <img border="2" alt="Karp" src="../static/Projects Pics/DavidKarp.jpg" width="50" height="200">
         </a>
     </div>
-    <div>Karp
+    <div>Lauren Karp
         <br>
         <a href="/Teachers" >
-            <img border="2" alt="Karp" src="../static/KDAWSON.jpg" width="50" height="200">
+            <img border="2" alt="Karp" src="../static/Projects Pics/LaurenKarp.jpg" width="50" height="200">
         </a>
     </div>
-    <div>Kuzmanich
+    <div>Kristin Kuzmanich
         <br>
         <a href="/Teachers" >
-            <img border="2" alt="Kuzmanich" src="../static/KDAWSON.jpg" width="50" height="200">
+            <img border="2" alt="Kuzmanich" src="../static/Projects Pics/KristinKuzmanich.jpg"width="50" height="200">
         </a>
     </div>
-    <div>Little
+    <div>April Little
         <br>
         <a href="/Teachers" >
-            <img border="2" alt="Little" src="../static/KDAWSON.jpg" width="50" height="200">
+            <img border="2" alt="Little" src="../static/Projects Pics/AprilLittle.jpg" width="50" height="200">
         </a>
     </div>
-    <div>Merlino
+    <div>Matt Merlino
         <br>
         <a href="/Teachers" >
-            <img border="2" alt="Merlino" src="../static/KDAWSON.jpg" width="50" height="200">
+            <img border="2" alt="Merlino" src="../static/Projects Pics/MattMerlino.jpg" width="50" height="200">
         </a>
     </div>
-    <div>Sager
+    <div>Rebecca Sager
         <br>
         <a href="/Teachers" >
-            <img border="2" alt="Sager" src="../static/KDAWSON.jpg" width="50" height="200">
+            <img border="2" alt="Sager" src="../static/Projects Pics/BeccaSager.jpg" width="50" height="200">
         </a>
     </div>
    </div>
