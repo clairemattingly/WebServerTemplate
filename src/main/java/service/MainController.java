@@ -22,7 +22,12 @@ public class MainController {
         model.addAttribute("department", department); // make the variable subject available in your html
         // this is where you call methods you've written to get information from your database, then store it a variable
         // and call model.addAttribute with that variable so you can use it in your html
-        return "department";
+
+		//Fix this code- make it real
+		// ArrayList variable = getDepartmentNames(department);
+		//model.addAttribute("teacher list", variable);
+
+		return "department";
 
         //model.addAttribute("teachers", teacherNames); // make the variable subject available in your html
         // this is where you call methods you've written to get information from your database, then store it a variable
