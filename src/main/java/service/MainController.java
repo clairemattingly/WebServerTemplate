@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+
 @Controller
 public class MainController {
 
@@ -29,6 +31,13 @@ public class MainController {
         // and call model.addAttribute with that variable so you can use it in your html
     }
 
+    @GetMapping("/Teacher")
+	public String teacher(Model model)
+	{
+		ArrayList<Recommendations> studentRecommendation = ConnectToStudentDatabase.recommendationInfo();
+		model.addAttribute("studentRecommendation", studentRecommendation);
+		return "Teachers";
+	}
 
 }
 

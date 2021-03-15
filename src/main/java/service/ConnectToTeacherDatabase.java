@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.sql.*;
 
 public class ConnectToTeacherDatabase {
-    public static void ConnectToTeacher() {
+    public static ArrayList<TeacherInfo> teacherInfo() {
+        ArrayList<TeacherInfo> teacherInfo = new ArrayList<TeacherInfo>();
+        TeacherInfo newTeacherInfo = new TeacherInfo("","","","", "");
+
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
@@ -27,8 +30,20 @@ public class ConnectToTeacherDatabase {
                  ResultSet resultSet = statement.executeQuery(selectSql)) {
 
                 while (resultSet.next()) {
-                    System.out.println(resultSet.getString(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3) + " " +
-                            resultSet.getString(4) + " " + resultSet.getString(5));
+                    String teacherName = resultSet.getString("teacher_Name");//might need to capatalize if doesn't work
+                    newTeacherInfo.setTeacherName(teacherName);
+                    String title = resultSet.getString("teacher_Title");
+                    newTeacherInfo.setTitle(title);
+                    String department = resultSet.getString("teacher_Department");
+                    newTeacherInfo.setDepartment(department);
+                    String education = resultSet.getString("teacher_Education");
+                    newTeacherInfo.setEducation(education);
+                    String email = resultSet.getString("teacher_Email");
+                    newTeacherInfo.setEmail(email);
+
+                    teacherInfo.add(newTeacherInfo);
+                    //printing out the results
+                    System.out.format(newTeacherInfo.getTeacherName(), newTeacherInfo.getTitle(), newTeacherInfo.getDepartment(), newTeacherInfo.getEducation(), newTeacherInfo.getEmail());
                 }
 
                 connection.close();
@@ -40,8 +55,9 @@ public class ConnectToTeacherDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return teacherInfo;
     }
-    public static ArrayList getTeacher(String teacherName) {
+    public static ArrayList getTeacher(String teacherName) {//might need to change a little or delete whole thing and just look at arrayList above
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
@@ -93,7 +109,7 @@ public class ConnectToTeacherDatabase {
         return teacherInfo;
     }
 
-    public static ArrayList getDepartmentNames(String department) {
+    public static ArrayList getDepartmentNames(String department) {//gets name of all teachers in that department
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
