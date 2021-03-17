@@ -84,12 +84,22 @@ this is what loops look like in thymeleaf-
     teacher = individual teacher name-String
     teachers = the arrayList of teacher names from Julia's program
     In the brackets, create a div/button for each of them
+-->
 
 <tr th:each="teacher: ${teachers}">
 
-    <td th:text="${teacher.name}" />
+    <td th:text="${teacher}" />
+    <div> class="flex-container"
+        <br>
+        <a href="/Teacher?teacher=Dawson" >
+            <!--
+            <img border="2" alt=${teacher} src= "../static/Projects Pics/KimDawson.jpg" width="50" height="200">
+        -->
+        </a>
+    </div>
+
 </tr>
--->
+
  <div class="flex-container">
     <div>Kim Dawson
         <br>

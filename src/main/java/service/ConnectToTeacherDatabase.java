@@ -41,7 +41,7 @@ public class ConnectToTeacherDatabase {
             e.printStackTrace();
         }
     }
-    public static ArrayList getTeacher(String teacherName) {
+    public static ArrayList<String> getTeacher(String teacherName) {
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
@@ -93,7 +93,7 @@ public class ConnectToTeacherDatabase {
         return teacherInfo;
     }
 
-    public static ArrayList getDepartmentNames(String department) {
+    public static ArrayList<String> getDepartmentNames(String department) {
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
