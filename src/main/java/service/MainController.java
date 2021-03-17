@@ -9,46 +9,45 @@ import java.util.*;
 @Controller
 public class MainController {
 
-	@GetMapping("/")
-	public String home()
-	{
+    @GetMapping("/")
+    public String home() {
 
-	    return "Home";
-	}
+        return "Home";
+    }
 
-	@GetMapping("/Department")
-    public String department(@RequestParam(name = "department", required = true) String department, Model model)
-
-    {
+    @GetMapping("/Department")
+    public String department(@RequestParam(name = "department", required = true) String department, Model model) {
         model.addAttribute("department", department); // make the variable subject available in your html
         // this is where you call methods you've written to get information from your database, then store it a variable
         // and call model.addAttribute with that variable so you can use it in your html
 
-		//Fix this code-
-		ConnectToTeacherDatabase database = new ConnectToTeacherDatabase();
-		ArrayList<String> teacherNames = database.getDepartmentNames(department);
-		model.addAttribute("teachers", teacherNames);
+        //Fix this code-
+        ConnectToTeacherDatabase database = new ConnectToTeacherDatabase();
+        ArrayList<String> teacherNames = database.getDepartmentNames(department);
+        model.addAttribute("teachers", teacherNames);
 
-		return "department";
+        return "department";
 
         //model.addAttribute("teachers", teacherNames); // make the variable subject available in your html
         // this is where you call methods you've written to get information from your database, then store it a variable
         // and call model.addAttribute with that variable so you can use it in your html
     }
-	@GetMapping("/Teacher")
-	public String teacher(@RequestParam(name = "teacher", required = true) String teacher, Model model)
 
-	{
-		model.addAttribute("teacher", teacher); // make the variable subject available in your html
-		// this is where you call methods you've written to get information from your database, then store it a variable
-		// and call model.addAttribute with that variable so you can use it in your html
+    @GetMapping("/Teacher")
+    public String teacher(@RequestParam(name = "teacher", required = true) String teacher, Model model) {
+        model.addAttribute("teacher", teacher); // make the variable subject available in your html
+        // this is where you call methods you've written to get information from your database, then store it a variable
+        // and call model.addAttribute with that variable so you can use it in your html
 
-		return "teacher";
+        //fix below
+        ArrayList<Recommendations> studentRecommendation = ConnectToStudentDatabase.recommendationInfo();
+        model.addAttribute("studentRecommendation", studentRecommendation);
 
-		//model.addAttribute("teachers", teacherNames); // make the variable subject available in your html
-		// this is where you call methods you've written to get information from your database, then store it a variable
-		// and call model.addAttribute with that variable so you can use it in your html
-	}
+        return "teacher";
+
+        //model.addAttribute("teachers", teacherNames); // make the variable subject available in your html
+        // this is where you call methods you've written to get information from your database, then store it a variable
+        // and call model.addAttribute with that variable so you can use it in your html
+    }
 
 }
-
