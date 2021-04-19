@@ -57,7 +57,7 @@ public class ConnectToTeacherDatabase {
         }
         return teacherInfo;
     }
-    public static ArrayList getTeacher(String teacherName) {//might need to change a little or delete whole thing and just look at arrayList above
+    public static ArrayList<String> getTeacher(String teacherName) {
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
@@ -109,7 +109,7 @@ public class ConnectToTeacherDatabase {
         return teacherInfo;
     }
 
-    public static ArrayList getDepartmentNames(String department) {//gets name of all teachers in that department
+    public static ArrayList<String> getDepartmentNames(String department) {
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
