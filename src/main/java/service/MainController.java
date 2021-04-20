@@ -40,7 +40,7 @@ public class MainController {
         // and call model.addAttribute with that variable so you can use it in your html
 
         //fix below
-        ArrayList<Recommendations> studentRecommendation = ConnectToStudentDatabase.recommendationInfo();
+        ArrayList<Recommendations> studentRecommendation = ConnectToStudentDatabase.recommendationInfo(teacher);
         model.addAttribute("studentRecommendation", studentRecommendation);
 
         return "teacher";

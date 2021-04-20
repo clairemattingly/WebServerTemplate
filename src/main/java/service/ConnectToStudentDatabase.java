@@ -58,7 +58,7 @@ public class ConnectToStudentDatabase {
     return percentage;
     }
 
-    public static ArrayList<Recommendations> recommendationInfo()
+    public static ArrayList<Recommendations> recommendationInfo(String teacherNames)
     {
         ArrayList<Recommendations> studentRecommendation = new ArrayList <Recommendations>();
         Recommendations newRecommendation = new Recommendations("","",0,"","");
@@ -73,7 +73,7 @@ public class ConnectToStudentDatabase {
             {
                 connection = DriverManager.getConnection(url);
 
-                String query = "SELECT * FROM Student";//SQL SELECT query
+                String query = "SELECT * FROM Student WHERE TeacherName = 'teacherNames'; ";//SQL SELECT query that filters all throughout table only from teachername
                 Statement st = connection.createStatement();//create the java statement
 
                 ResultSet rs = st.executeQuery(query);//execute the query and get a java resultset

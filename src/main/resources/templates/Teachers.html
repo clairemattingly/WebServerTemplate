@@ -67,6 +67,15 @@
     }
 
   }
+   ArrayList<TeacherInfo> teacherInformation = ConnectToTeacherDatabase.TeacherInfo(teacher);
+
+   String Name = teacherInformation.getTeacherName();
+
+   String Title = teacherInformation.getTitle();
+
+   String Background = teacherInformation.getEducation();
+
+   String Contact = teacherInformation.getEmail();
 
 </style>
 <body>
