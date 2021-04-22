@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>English Department</title>
+    <title th:text ="${teacher}" />
 </head>
 
 <title>Glass Dome</title>
@@ -69,26 +70,25 @@
   }
 
 </style>
-<body>
 
-<h1>Kim Dawson</h1>
-<p>	Vice Principal of Student Life, English Teacher
-</p>
 
-<p>
-    Background: BA from Seattle University, MA from Seattle University
-</p>
+<h1 th:text="${teacher}" />
 
-<p>
-    Contact: kdawson@holynames-sea.org
-</p>
+<p th:text = "${teacherStats.getTeacherName()}"> </p>
+
+<p th:text = "${teacherStats.getTitle()}"> </p>
+
+<p th:text = "${teacherStats.getEducation()}"> </p>
+
+<p th:text = "${teacherStats.getEmail()}" ></p>
+
 <div class="flex-container">
-    <div> Positive Feedback
+    <div th:each="studentReview: ${studentRecommendation}" >
 
-
-    </div>
-
-    <div> Constructive Criticism
+        <p th:text = "${studentReview.getStudentName()}"> </p>
+        <p th:text = "${studentReview.getClassYear()}" ></p>
+        <p th:text = "${studentReview.getRecommendation()}" ></p>
+        <p th:text = "${studentReview.getWhy()}" ></p>
 
     </div>
 </div>

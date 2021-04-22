@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.sql.*;
 
 public class ConnectToTeacherDatabase {
-    public static ArrayList<TeacherInfo> teacherInfo() {
-        ArrayList<TeacherInfo> teacherInfo = new ArrayList<TeacherInfo>();
+    public static TeacherInfo teacherInfo(String teacherName) {
         TeacherInfo newTeacherInfo = new TeacherInfo("","","","", "");
-
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
@@ -15,48 +13,44 @@ public class ConnectToTeacherDatabase {
         String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;" + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;",
                 hostname, dbName, user, password);
         Connection connection;
-
         try {
             connection = DriverManager.getConnection(url);
-            String schema = connection.getSchema();
-            System.out.println("Successful connection - Schema: " + schema);
+            String query = "SELECT * FROM Teacher WHERE Name = " + teacherName + ";" ;//SQL SELECT query that filters all throughout table only from teachername
 
-            System.out.println("Query data example:");
-            System.out.println("==============================");
+            Statement st = connection.createStatement();//create the java statement
+            ResultSet resultSet = st.executeQuery(query);//execute the query and get a java resultset
+           //printing
+            ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+            String columnName = resultSetMetaData.getColumnName(1);
+            System.out.println(columnName);
 
-            String selectSql = " SELECT * from Teacher; ";
+            while (resultSet.next()) {
+                String teacher = resultSet.getString("Name");//might need to capatalize if doesn't work
+                newTeacherInfo.setTeacherName(teacher);
+                String title = resultSet.getString("Title");
+                newTeacherInfo.setTitle(title);
+                String department = resultSet.getString("Department");
+                newTeacherInfo.setDepartment(department);
+                String education = resultSet.getString("Education");
+                newTeacherInfo.setEducation(education);
+                String email = resultSet.getString("Email");
+                newTeacherInfo.setEmail(email);
 
-            try (Statement statement = connection.createStatement();
-                 ResultSet resultSet = statement.executeQuery(selectSql)) {
-
-                while (resultSet.next()) {
-                    String teacherName = resultSet.getString("teacher_Name");//might need to capatalize if doesn't work
-                    newTeacherInfo.setTeacherName(teacherName);
-                    String title = resultSet.getString("teacher_Title");
-                    newTeacherInfo.setTitle(title);
-                    String department = resultSet.getString("teacher_Department");
-                    newTeacherInfo.setDepartment(department);
-                    String education = resultSet.getString("teacher_Education");
-                    newTeacherInfo.setEducation(education);
-                    String email = resultSet.getString("teacher_Email");
-                    newTeacherInfo.setEmail(email);
-
-                    teacherInfo.add(newTeacherInfo);
-                    //printing out the results
-                    System.out.format(newTeacherInfo.getTeacherName(), newTeacherInfo.getTitle(), newTeacherInfo.getDepartment(), newTeacherInfo.getEducation(), newTeacherInfo.getEmail());
-                }
-
-                connection.close();
-
-            } catch (SQLException e)//handle any errors
-            {
-                e.printStackTrace();
+                System.out.format(newTeacherInfo.getTeacherName(), newTeacherInfo.getTitle(), newTeacherInfo.getDepartment(), newTeacherInfo.getEducation(), newTeacherInfo.getEmail());
+                System.out.println(newTeacherInfo);
             }
-        } catch (Exception e) {
+
+            connection.close();
+        } catch (SQLException e)//handle any errors
+        {
             e.printStackTrace();
         }
-        return teacherInfo;
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return newTeacherInfo;
     }
+
     public static ArrayList<String> getTeacher(String teacherName) {
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";

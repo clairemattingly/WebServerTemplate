@@ -35,15 +35,26 @@ public class MainController {
 
     @GetMapping("/Teacher")
     public String teacher(@RequestParam(name = "teacher", required = true) String teacher, Model model) {
-        model.addAttribute("teacher", teacher); // make the variable subject available in your html
+        model.addAttribute("teacher", teacher);
+
+        // make the variable subject available in your html
         // this is where you call methods you've written to get information from your database, then store it a variable
         // and call model.addAttribute with that variable so you can use it in your html
 
         //fix below
-        ArrayList<Recommendations> studentRecommendation = ConnectToStudentDatabase.recommendationInfo();
+        ConnectToStudentDatabase database = new ConnectToStudentDatabase();
+        ArrayList<Recommendations> studentRecommendation = database.recommendationInfo();
         model.addAttribute("studentRecommendation", studentRecommendation);
 
-        return "teacher";
+        //return a teacherInfo object with accessible variables (college, year, etc)
+        //model.add Att
+
+        System.out.println(teacher);
+        ConnectToTeacherDatabase database2 = new ConnectToTeacherDatabase();
+        TeacherInfo teacherInformation = database2.teacherInfo(teacher);
+        model.addAttribute("teacherStats", teacherInformation);
+
+        return "Teachers";
 
         //model.addAttribute("teachers", teacherNames); // make the variable subject available in your html
         // this is where you call methods you've written to get information from your database, then store it a variable

@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.ResultSetMetaData;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -8,8 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
+
 public class ConnectToStudentDatabase {
-    public static double percentageCalculation(String teacherName) {//connects to database and returns percentages of yes for specific teacher
+    /* public static double percentageCalculation(String teacherName) {//connects to database and returns percentages of yes for specific teacher
         String hostname = "holynamesacademy.database.windows.net";
         String dbName = "GlassDome";
         String user = "hna-admin";
@@ -57,7 +59,7 @@ public class ConnectToStudentDatabase {
         }
     return percentage;
     }
-
+*/
     public static ArrayList<Recommendations> recommendationInfo()
     {
         ArrayList<Recommendations> studentRecommendation = new ArrayList <Recommendations>();
@@ -80,15 +82,15 @@ public class ConnectToStudentDatabase {
 
                 while(rs.next())//iterate through java resultset
                 {
-                    String teacherName = rs.getString("student_TeacherName");
+                    String teacherName = rs.getString("TeacherName");
                     newRecommendation.setTeacherName(teacherName);
-                    String name = rs.getString("student_Name");
+                    String name = rs.getString("Name");
                     newRecommendation.setStudentName(name);
-                    int classYear = rs.getInt("student_ClassYear");
+                    int classYear = rs.getInt("ClassYear");
                     newRecommendation.setClassYear(classYear);
-                    String recommendation = rs.getString("student_Recommendation");
+                    String recommendation = rs.getString("Recommendation");
                     newRecommendation.setRecommendation(recommendation);
-                    String why = rs.getString("student_Why");
+                    String why = rs.getString("Why");
                     newRecommendation.setWhy(why);
 
                     studentRecommendation.add(newRecommendation);
